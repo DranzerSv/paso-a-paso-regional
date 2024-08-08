@@ -5,7 +5,7 @@ const instructions = document.querySelectorAll(".instruction");
 const titles = document.querySelectorAll(".title");
 const backButton = document.getElementById("back-button");
 const nextButton = document.getElementById("next-button");
-const images= document.querySelectorAll('img');
+const images = document.querySelectorAll('img');
 const urlParams = new URLSearchParams(window.location.search);
 const pais = urlParams.get('pais');
 
@@ -38,36 +38,53 @@ const changeInstruction = () => {
   });
 };
 
+const hideBackButton = () => {
+  const backButton = document.getElementById('back-button');
+  if (currentStep === 1) {
+    console.log("ocultar");
+    backButton.classList.add('first-page');
+  } else {
+    console.log("mostrar");
+    backButton.classList.remove('first-page');
+  }
+}
+
 images.forEach(image => {
-      // Si la imagen no tiene la clase específica
-      if (!image.classList.contains(pais)) {
-          // Añadimos la clase 'oculto' para ocultarla
-          image.classList.add('hide-img');
-      }
-  });
+  // Si la imagen no tiene la clase específica
+  if (!image.classList.contains(pais)) {
+    // Añadimos la clase 'oculto' para ocultarla
+    image.classList.add('hide-img');
+  }
+});
 
 backButton.addEventListener("click", () => {
+
   if (currentStep > 1) {
     currentStep -= 1;
   }
   changeTitle();
   changeBarStatus();
   changeInstruction();
+  hideBackButton();
 });
 nextButton.addEventListener("click", () => {
+
   if (currentStep < 4) {
     currentStep += 1;
   }
   changeTitle();
   changeBarStatus();
   changeInstruction();
+  hideBackButton();
 });
 
 barsButtons.forEach((barButton) => {
   barButton.addEventListener("click", function () {
+
     currentStep = parseInt(barButton.id[9]);
     changeTitle();
     changeBarStatus();
     changeInstruction();
+    hideBackButton();
   });
 });
