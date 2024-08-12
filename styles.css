@@ -121,6 +121,7 @@
     text-decoration: underline;
     line-height: 19.2px;
     font-family: Roboto;
+    cursor: pointer;
   }
   .first-page{
     display: none;
@@ -139,6 +140,7 @@
     font-weight: 700px;
     line-height: 22.4px;
     color: #ffffff;
+    cursor: pointer;
     
   }
   .button-back:hover {

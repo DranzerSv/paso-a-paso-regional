@@ -40,11 +40,18 @@ const changeInstruction = () => {
 
 const hideBackButton = () => {
   const backButton = document.getElementById('back-button');
+  const nextButton = document.getElementById('next-button');
+
+  if (currentStep === 4) {
+    nextButton.classList.add('first-page');
+  } else {
+
+    nextButton.classList.remove('first-page');
+  }
   if (currentStep === 1) {
-    console.log("ocultar");
     backButton.classList.add('first-page');
   } else {
-    console.log("mostrar");
+
     backButton.classList.remove('first-page');
   }
 }
